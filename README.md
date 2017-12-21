@@ -130,6 +130,7 @@ It's a list of list and each element of {quest} looks like:
 
 Let's take an exemple. <br />
 Imagine that in your form, one is asked 'What is your favourite football player?' (this question's token is 'XvwSeCsz3GZZ' on Typeform API) and the multiple choices are: <br />
+<br />
 -Zinedine Zidane <br />
 -Cristiano Ronaldo <br />
 -Lionel Messi <br />
@@ -141,10 +142,15 @@ In the list {quest} you'll get the following sublists:
 
 ```
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ_0','What is your favourite football player?','Zinedine Zidane','multiple_choice_1_choice']
+
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ_1','What is your favourite football player?','Cristiano Ronaldo','multiple_choice_1_choice']
+
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ_2','What is your favourite football player?','Lionel Messi','multiple_choice_1_choice']
+
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ_3','What is your favourite football player?','Diego Mardonna','multiple_choice_1_choice']
+
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ_4','What is your favourite football player?','Pelé','multiple_choice_1_choice']
+
 ['XvwSeCsz3GZZ','XvwSeCsz3GZZ','What is your favourite football player?','autre_text','multiple_choice_1_choice']
  ```
 
