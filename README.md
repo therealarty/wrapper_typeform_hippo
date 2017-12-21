@@ -47,7 +47,7 @@ quest, answ=client.typeform_to_DF('{form_id}')
 
 Get the email and the uuid (if it exists) when it is asks in a specific question (question text: {question_text_email} ):
 ```
-answ=db.mail_quest(answ,'{question_text_email}')
+answ=db.mail_quest(quest,answ,'{question_text_email}')
 ```
 
 #### Update the database
