@@ -3,6 +3,7 @@ import pandas as pd
 import time
 import json
 from wrapper_typeform.clientauth import ClientAuth
+import uuid as uuid2
 
 class Client(object):
     
