@@ -9,6 +9,6 @@ setup(name='wrapper_typeform',
       license='GPL',
       packages=['wrapper_typeform'],
       install_requires=[
-          'requests', 'pandas','uuid'
+          'requests', 'pandas','uuid','time'
       ],
       zip_safe=False)
