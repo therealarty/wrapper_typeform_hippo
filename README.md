@@ -87,46 +87,49 @@ I. Create tables {_question_sql} and {_answer_sql} on postgreSQL <br />
 
 II. Create tables {QuestionDjango} and {AnswerDjango} on Django <br />
 <br />
-  1) Open models.py <br />
-  2)Copy and paste at the end of the doc: 
-    ```
-  #Questions 
-  class {QuestionDjango}(models.Model):
-      id=models.TextField(primary_key=True)
-      #question we ask in the form
-      question_text=models.TextField(blank=True, null=True)
-      possible_answer=models.TextField(blank=True, null=True)
-      type=models.TextField(blank=True, null=True)
+1) Open models.py <br />
+2)Copy and paste at the end of the doc: 
+```
+#Questions 
+class {QuestionDjango}(models.Model):
+    id=models.TextField(primary_key=True)
+    #question we ask in the form
+    question_text=models.TextField(blank=True, null=True)
+    possible_answer=models.TextField(blank=True, null=True)
+    type=models.TextField(blank=True, null=True)
 
-      class Meta:
-          managed=False
-          db_table='{_question_sql}'
+    class Meta:
+        managed=False
+        db_table='{_question_sql}'
 
-  #Answers 
-  #NB: here we do not create a relation between {QuestionDjango} and {AnswerDjango} but we did for the tables {_question_sql} and {_answer_sql} <br />
-  class {AnswerDjango}(models.Model):
-      id=models.BigIntegerField(primary_key=True)
-      userid=models.UUIDField(blank=True, null=True)
-      email=models.CharField(max_length=254, blank=True, null=True)
-      usertoken=models.CharField(max_length=100, blank=True, null=True)
-      questionid=models.TextField(primary_key=True)
-      date=models.BigIntegerField(blank=True, null=True)
-      answer=models.IntegerField(blank=True, null=True)
-      answer_text=models.TextField(blank=True, null=True)
+#Answers 
+class {AnswerDjango}(models.Model):
+    id=models.BigIntegerField(primary_key=True)
+    userid=models.UUIDField(blank=True, null=True)
+    email=models.CharField(max_length=254, blank=True, null=True)
+    usertoken=models.CharField(max_length=100, blank=True, null=True)
+    questionid=models.TextField(primary_key=True)
+    date=models.BigIntegerField(blank=True, null=True)
+    answer=models.IntegerField(blank=True, null=True)
+    answer_text=models.TextField(blank=True, null=True)
 
-      class Meta:
-          managed=False
-          db_table='{_answer_sql}'
-  ```
+    class Meta:
+        managed=False
+        db_table='{_answer_sql}'
+```
 
 
 ## Format of lists you'll get from Typeform API
 ### Questions list {quest}
+
 It's a list of list and each element of {quest} looks like:
+
 ```
 [id_global_question, id_sub_question, question_text, possible_answer, type_of_question]
 ```
-Let's take an exemple. Imagine that in your form, one is asked 'What is your favourite football player?' (this question's token is 'XvwSeCsz3GZZ' on Typeform API) and the multiple choices are: <br />
+
+Let's take an exemple. <br />
+Imagine that in your form, one is asked 'What is your favourite football player?' (this question's token is 'XvwSeCsz3GZZ' on Typeform API) and the multiple choices are: <br />
 -Zinedine Zidane <br />
 -Cristiano Ronaldo <br />
 -Lionel Messi <br />
