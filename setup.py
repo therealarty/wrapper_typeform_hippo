@@ -9,6 +9,6 @@ setup(name='wrapper_typeform',
       author_email='hippolyte.hazard@gmail.com',
       license='GPL',
       install_requires=[
-          'requests', 'pandas','uuid','time'
+          'requests', 'pandas','uuid'
       ],
       zip_safe=False)
