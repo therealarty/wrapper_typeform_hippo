@@ -1,11 +1,6 @@
-def mail_quest(quest,answ,question):
+def mail_quest(dreemer_info_DF,quest,answ,question):
 
     id=[t[0] for t in quest if t[2]==question][0]
-
-    dreemer=DreemerDreemeridentity.objects.filter()
-    dreemer_info=list(dreemer.values(
-    'dreemer','email'))
-    dreemer_info_DF=pd.DataFrame(dreemer_info,columns=['dreemer','email'])
 
     no_email=[t for t in answ if '@' not in t[1]]
     token_no_mail=list(set([t[3] for t in no_email]))
