@@ -68,6 +68,7 @@ db.update_database_answ(answ,{AnswerDjango})
 ```
 
 Create the tables {QuestionDjango} and {AnswerDjango} <br />
+<br />
 I. Create tables {_question_sql} and {_answer_sql} on postgreSQL <br />
 <br />
   1) Open a terminal <br />
