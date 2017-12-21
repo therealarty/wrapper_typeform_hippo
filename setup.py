@@ -1,7 +1,8 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='wrapper_typeform',
       version='0.1',
+      packages=find_packages(),
       description=' Convert Data from Typeform API to two lists (questions and answers) written in Python',
       url='https://github.com/Hippo26/wrapper_typeform-python',
       author='Hippolyte Hazard',
