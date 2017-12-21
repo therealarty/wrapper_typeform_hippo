@@ -103,7 +103,7 @@ II. Create tables {QuestionDjango} and {AnswerDjango} on Django <br />
           db_table='{_question_sql}'
 
   #Answers 
-  #NB: here we do not create a relation between {QuestionDjango} and {AnswerDjango} but we did for the tables {_question_sql} and {_answer_sql}
+  #NB: here we do not create a relation between {QuestionDjango} and {AnswerDjango} but we did for the tables {_question_sql} and {_answer_sql} <br />
   class {AnswerDjango}(models.Model):
       id=models.BigIntegerField(primary_key=True)
       userid=models.UUIDField(blank=True, null=True)
