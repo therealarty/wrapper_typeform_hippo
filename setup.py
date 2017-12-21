@@ -8,7 +8,6 @@ setup(name='wrapper_typeform',
       author='Hippolyte Hazard',
       author_email='hippolyte.hazard@gmail.com',
       license='GPL',
-      packages=['wrapper_typeform'],
       install_requires=[
           'requests', 'pandas','uuid','time'
       ],
