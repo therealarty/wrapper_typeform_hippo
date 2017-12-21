@@ -1,4 +1,4 @@
-def mail_quest(answ,question):
+def mail_quest(quest,answ,question):
 
     id=[t[0] for t in quest if t[2]==question][0]
 
