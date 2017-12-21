@@ -76,11 +76,11 @@ I. Create tables {_question_sql} and {_answer_sql} on postgreSQL <br />
   ```
   env PGPASSWORD='{password_database}' psql -h analytics-db.rythm.co -U dreem
   ```
-  3)Copy and paste: 
+  3) Copy and paste: 
   ```
   create table {_question_sql} (id varchar(30) PRIMARY KEY,question_text text, possible_answer text, type text);
   ```
-  4)Copy and paste: 
+  4) Copy and paste: 
   ```
   create table {_answer_sql} (id integer PRIMARY KEY, email varchar(100),userid UUID, usertoken varchar(100),date integer,questionid varchar(30) references {_question_sql} ,answer integer, answer_text text);
 
@@ -89,7 +89,7 @@ I. Create tables {_question_sql} and {_answer_sql} on postgreSQL <br />
 II. Create tables {QuestionDjango} and {AnswerDjango} on Django <br />
 <br />
 1) Open models.py <br />
-2)Copy and paste at the end of the doc: 
+2) Copy and paste at the end of the doc: 
 ```
 #Questions 
 class {QuestionDjango}(models.Model):
@@ -130,6 +130,7 @@ It's a list of list and each element of {quest} looks like:
 ```
 
 Let's take an exemple. <br />
+<br />
 Imagine that in your form, one is asked 'What is your favourite football player?' (this question's token is 'XvwSeCsz3GZZ' on Typeform API) and the multiple choices are: <br />
 <br />
 -Zinedine Zidane <br />
@@ -172,6 +173,7 @@ It's a list of list and each element of {answ} looks like:
 ```
 Rem: <br />
   -date in utc timestamp <br />
+  <br />
   -if you did not answer to this id_global_question: <br />
       answer=None <br />
       answer_text=None <br />
@@ -180,11 +182,11 @@ Rem: <br />
   -for question_type in ['legal','yes_no','dropdown','multiple_choice_1_choice','multiple_choice_choices'] except autre_text: <br />
     - answer=1 if you chose this possible_answer else 0 <br />
     - answer_text=None <br />
-    
+    <br />
   -for question_type in ['rating','number','opinion_scale']: <br />
     - answer=your_answer <br />
     - answer_text=None  <br />
-   
+   <br />
   -for question_type in ['date','website','long_text','email','short_text'] or if autre_text : <br />
     - answer=1 <br />
     - answer_text=your_answer
