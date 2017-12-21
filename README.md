@@ -38,7 +38,7 @@ https://developer.typeform.com/get-started/scopes/
 
 Get questions and answers from your form {form_id} to lists quest and answ:
 ```
-quest, answ=typeform_to_DF('{form_id}')
+quest, answ=client.typeform_to_DF('{form_id}')
 ```
 
 ### For Rythm only
