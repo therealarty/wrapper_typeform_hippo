@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import time
 import json
-from from wrapper_typeform.clientauth import ClientAuth
+from wrapper_typeform.clientauth import ClientAuth
 
 class Client(object):
     
