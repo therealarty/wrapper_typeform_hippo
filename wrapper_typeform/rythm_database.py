@@ -1,7 +1,12 @@
 def mail_quest(dreemer_info_DF,quest,answ,question):
 
-    id=[t[0] for t in quest if t[2]==question][0]
-
+    id=[t[0] for t in quest if t[2]==question]
+    
+    if len(id)==0:
+        return('This question is not in the form')
+    else:
+        id=id[0]
+    
     no_email=[t for t in answ if '@' not in t[1]]
     token_no_mail=list(set([t[3] for t in no_email]))
 
