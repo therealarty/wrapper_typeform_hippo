@@ -247,6 +247,7 @@ class Client(object):
 
                     else:
                         rep_DS+=[[id,email,uuid,token,date,None,None]]
-
+                        
+            print(str(len(reponses))+'/'+str(len(reponses)))  
             print("It's good")            
             return(question_DS,rep_DS)
