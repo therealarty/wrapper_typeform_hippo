@@ -14,7 +14,8 @@ def mail_quest(dreemer_info_DF,quest,answ,question):
         if len(dreemer_info_DF[dreemer_info_DF['email']==mail])>0:
                 uuid=dreemer_info_DF[dreemer_info_DF['email']==mail].iloc[0]['dreemer']
         email+=[[t[0],mail,uuid,t[3],t[4],t[5],t[6]] for t in rep]
-        
+    
+    
     return(email)
 
 
@@ -27,7 +28,8 @@ def update_database_quest (quest_list,QuestionDjango):
             print(i,'/',len(quest_list))
         quest=quest_list[i]
         QuestionDjango.objects.create(id=quest[1],question_text=quest[2],possible_answer=quest[3],type=quest[4])
-        
+    
+    print(len(quest_list),'/',len(quest_list))
     return("It's done !")
 
 
@@ -44,7 +46,8 @@ def update_database_answ (answ_list,AnswerDjango):
             print(i,'/',len(to_update))
         answer=to_update[i]
         AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
-        
+    
+    print(len(to_update),'/',len(to_update))
     return("It's done !")
 
 
