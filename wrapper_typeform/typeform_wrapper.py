@@ -102,7 +102,16 @@ class Client(object):
 
 
                 elif type=='number':
-                    possible_answer='['+str(questions[i]['validations']['min_value'])+','+str(questions[i]['validations']['max_value'])+']'
+                    if 'min_value' in questions[i]['validations'].keys():
+                        min_value=str(questions[i]['validations']['min_value'])
+                    else:
+                        min_value=None
+                        
+                    if 'max_value' in questions[i]['validations'].keys():
+                        max_value=str(questions[i]['validations']['max_value'])
+                    else:
+                        max_value=None
+                    possible_answer='['+min_value+','+max_value+']'
                     question_DS.append([id,id,title,possible_answer,type])   
 
 
