@@ -7,10 +7,10 @@ def mail_quest(dreemer_info_DF,quest,answ,question):
     else:
         id=id[0]
     
-    no_email=[t for t in answ if '@' not in t[1]]
+    no_email=[t for t in answ if '@' not in str(t[1])]
     token_no_mail=list(set([t[3] for t in no_email]))
 
-    email=[t for t in answ if '@' in t[1]]
+    email=[t for t in answ if '@' in str(t[1])]
 
     for i in range(len(token_no_mail)):
         rep=[t for t in answ if t[3]==token_no_mail[i]]
