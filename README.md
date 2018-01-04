@@ -47,10 +47,9 @@ quest, answ=client.typeform_to_DF('{form_id}')
 
 Get the email and the uuid (if it exists) when it is asks in a specific question (question text: {question_text_email} ):
 ```
-dreemer=DreemerDreemeridentity.objects.filter(email__in=list(set([t[1].lower() for t in answ if t[1]!=None)))
-    dreemer_info=list(dreemer.values(
-    'dreemer','email'))
-    dreemer_info_DF=pd.DataFrame(dreemer_info,columns=['dreemer','email'])
+dreemer=DreemerDreemeridentity.objects.filter(email__in=list(set([t[1].lower() for t in answ if t[1]!=None])))
+dreemer_info=list(dreemer.values('dreemer','email'))
+dreemer_info_DF=pd.DataFrame(dreemer_info,columns=['dreemer','email'])
 
 answ=db.mail_quest(dreemer_info_DF,quest,answ,'{question_text_email}')
 ```
