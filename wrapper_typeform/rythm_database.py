@@ -14,7 +14,9 @@ def mail_quest(dreemer_info_DF,quest,answ,question):
 
     for i in range(len(token_no_mail)):
         rep=[t for t in answ if t[3]==token_no_mail[i]]
-        mail=[t[6] for t in rep if t[0]==id][0].lower()
+        mail=[t[6] for t in rep if t[0]==id][0]
+        if mail != None:
+            mail=mail.lower()
         uuid=None
         if len(dreemer_info_DF[dreemer_info_DF['email']==mail])>0:
                 uuid=dreemer_info_DF[dreemer_info_DF['email']==mail].iloc[0]['dreemer']
