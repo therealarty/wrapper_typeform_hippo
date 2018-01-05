@@ -54,7 +54,7 @@ dreemer_info_DF=pd.DataFrame(dreemer_info,columns=['dreemer','email'])
 answ=db.mail_quest(dreemer_info_DF,quest,answ,'{question_text_email}')
 ```
 
-Get the uuid (if it exists) when the email is not null):
+Get the uuid (if it exists) when the email is not null:
 ```
 dreemer=DreemerDreemeridentity.objects.filter(email__in=list(set([t[1].lower() for t in answ if t[1]!=None])))
 dreemer_info=list(dreemer.values('dreemer','email'))
@@ -81,7 +81,7 @@ NB: run this function everytime you want to update the datas of the form
 db.update_database_answ(answ,{AnswerDjango})
 ```
 
-Create the tables {QuestionDjango} and {AnswerDjango} <br />
+How create the tables {QuestionDjango} and {AnswerDjango} <br />
 <br />
 I. Create tables {_question_sql} and {_answer_sql} on postgreSQL <br />
 <br />
