@@ -57,7 +57,7 @@ def update_database_quest (quest_list,QuestionDjango):
 def update_database_answ (answ_list,AnswerDjango):
     
     
-    token_already_uploaded=list(set([t['token'] for t in list(AnswerDjango.objects.all().values('usertoken'))]))
+    token_already_uploaded=list(set([t['usertoken'] for t in list(AnswerDjango.objects.all().values('usertoken'))]))
     to_update=[t for t in answ_list if t[3]  not in token_already_uploaded]
     len_tablesql=AnswerDjango.objects.count()
     
