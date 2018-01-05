@@ -123,7 +123,7 @@ class {AnswerDjango}(models.Model):
     userid=models.UUIDField(blank=True, null=True)
     email=models.CharField(max_length=254, blank=True, null=True)
     usertoken=models.CharField(max_length=100, blank=True, null=True)
-    questionid=models.TextField(primary_key=True)
+    questionid=models.TextField(blank=False, null=False)
     date=models.BigIntegerField(blank=True, null=True)
     answer=models.IntegerField(blank=True, null=True)
     answer_text=models.TextField(blank=True, null=True)
