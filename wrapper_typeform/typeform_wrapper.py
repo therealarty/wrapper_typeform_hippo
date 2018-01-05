@@ -190,7 +190,7 @@ class Client(object):
                     uuid=None
                     
                 if 'email' in reponses[i]['hidden'].keys():
-                    if email[0]=='"':
+                    if reponses[i]['hidden']['email']=='"':
                         email=reponses[i]['hidden']['email'][1:-1]
                     else:
                         email=reponses[i]['hidden']['email']
