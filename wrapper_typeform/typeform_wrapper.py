@@ -252,12 +252,12 @@ class Client(object):
                                         rep_DS+=[[id,email,uuid,token,date,1,None]] 
                                     else:
                                         rep_DS+=[[id,email,uuid,token,date,0,None]]
-                                 else:
+                                else:
                                     if question_DS[j][3] in rep_quest[choix][lab]:
                                         rep_DS+=[[id,email,uuid,token,date,1,None]] 
                                     else:
                                         rep_DS+=[[id,email,uuid,token,date,0,None]]
-                                    
+                                                                        
                             else:
                                 if 'other'in rep_quest[choix].keys():
                                     rep=rep_quest[choix]['other']  
