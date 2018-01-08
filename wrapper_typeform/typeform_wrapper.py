@@ -241,11 +241,13 @@ class Client(object):
 
                             if question_DS[j][4]=='multiple_choice_1_choice':
                                 choix='choice'
+                                lab='label'
                             else:
                                 choix='choices'
+                                lab='labels'
 
                             if id!=question_DS[j][0]:
-                                if question_DS[j][3] in rep_quest[choix]:
+                                if question_DS[j][3] in rep_quest[choix][lab]:
                                     rep_DS+=[[id,email,uuid,token,date,1,None]] 
                                 else:
                                     rep_DS+=[[id,email,uuid,token,date,0,None]]
