@@ -178,7 +178,7 @@ class Client(object):
                 
                 rep_user=reponses[i]['answers']
                 
-                if 'userid' in reponses[i]['hidden'].keys():
+                if 'userid' in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['userid']
                     if uuid[0]=='"':
                         uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
@@ -186,6 +186,16 @@ class Client(object):
                         uuid=None
                     else:
                         uuid=uuid2.UUID(reponses[i]['hidden']['userid'])
+                        
+                elif 'uuid' in reponses[i]['hidden'].keys() :
+                    uuid=reponses[i]['hidden']['uuid']
+                    if uuid[0]=='"':
+                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
+                    elif uuid=='xxxxx':
+                        uuid=None
+                    else:
+                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'])      
+                
                 else:
                     uuid=None
                     
