@@ -175,7 +175,7 @@ class Client(object):
                 if i % 100 == 0:
                     print(str(i)+"th form out of "+str(len(reponses)))
 
-                rep_user_DS=[]
+                
                 rep_user=reponses[i]['answers']
                 
                 if 'userid' in reponses[i]['hidden'].keys():
