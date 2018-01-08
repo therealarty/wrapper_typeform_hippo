@@ -247,11 +247,17 @@ class Client(object):
                                 lab='labels'
 
                             if id!=question_DS[j][0]:
-                                if question_DS[j][3] in rep_quest[choix][lab]:
-                                    rep_DS+=[[id,email,uuid,token,date,1,None]] 
-                                else:
-                                    rep_DS+=[[id,email,uuid,token,date,0,None]]
-
+                                if lab=='label':
+                                    if question_DS[j][3]==rep_quest[choix][lab]:
+                                        rep_DS+=[[id,email,uuid,token,date,1,None]] 
+                                    else:
+                                        rep_DS+=[[id,email,uuid,token,date,0,None]]
+                                 else:
+                                    if question_DS[j][3] in rep_quest[choix][lab]:
+                                        rep_DS+=[[id,email,uuid,token,date,1,None]] 
+                                    else:
+                                        rep_DS+=[[id,email,uuid,token,date,0,None]]
+                                    
                             else:
                                 if 'other'in rep_quest[choix].keys():
                                     rep=rep_quest[choix]['other']  
