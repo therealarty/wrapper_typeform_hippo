@@ -180,21 +180,23 @@ class Client(object):
                 
                 if 'userid' in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['userid']
-                    if uuid[0]=='"':
+                    if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
-                    elif uuid=='xxxxx':
-                        uuid=None
-                    else:
+                    elif len(uuid)==32:
                         uuid=uuid2.UUID(reponses[i]['hidden']['userid'])
+                    else:
+                        uuid=None
+                    
                         
                 elif 'uuid' in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['uuid']
-                    if uuid[0]=='"':
-                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
-                    elif uuid=='xxxxx':
+                    if len(uuid)==34:
+                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
+                    elif len(uuid)==32:
+                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'])
+                    else :
                         uuid=None
-                    else:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'])      
+                       
                 
                 else:
                     uuid=None
