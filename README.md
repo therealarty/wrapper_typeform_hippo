@@ -41,6 +41,14 @@ Get questions and answers from your form {form_id} to lists quest and answ:
 quest, answ=client.typeform_to_DF('{form_id}')
 ```
 
+
+
+To put these two lists into a readable dataframe:
+```
+answ_DF=db.to_dataframe(quest,answ)
+```
+
+
 ### For Rythm only
 
 #### Email and UUID
