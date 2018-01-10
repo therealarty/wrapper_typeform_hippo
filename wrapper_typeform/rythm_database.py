@@ -72,3 +72,26 @@ def update_database_answ (answ_list,AnswerDjango):
 
 
 
+def to_dataframe(quest,answ):
+    token=list(set([t[3] for t in answ]))
+    rep_all=[]
+    for j in range(len(quest)):
+        id_quest=quest[j][1]
+        if (quest[j][4] in ['short_text','long_text','date','website','email'] or quest[j][3] in ['autre_text']):
+            temp=[t[6] for t in answ_fr if t[0]==id_quest]
+        else:
+            temp=[t[5] for t in answ_fr if t[0]==id_quest]
+
+        rep_all.append(temp)
+
+    rep_all.append([t[1] for t in answ if t[0]==quest])
+    rep_all.append([t[2] for t in answ if t[0]==quest])
+    rep_DF=pd.DataFrame(rep_all,columns=token)
+    rep_DF['id_quest']=[t[1] for t in quest]+['email','uuid']
+    rep_DF['possible_answ']=[t[2] for t in quest]+['email','uuid']
+    rep_DF['question']=[t[3] for t in quest]+['email','uuid']
+    rep_DF.set_index(['id_quest','possible_answ','question'],inplace=True)
+    rep_DF=rep_DF.T
+    return(rep_DF)
+    
+    
