@@ -244,9 +244,9 @@ class Client(object):
 
                         elif rep_quest['field']['type']=='dropdown':
                             if question_DS[j][3]==rep_quest['text']:
-                                rep_DS+=[[id,email,uuid,token,date,rep,None]] 
+                                rep_DS+=[[id,email,uuid,token,date,1,None]] 
                             else:
-                                rep_DS+=[[id,email,uuid,token,date,rep,None]]
+                                rep_DS+=[[id,email,uuid,token,date,0,None]]
 
 
                         elif rep_quest['field']['type']=='multiple_choice':
