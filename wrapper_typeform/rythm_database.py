@@ -78,9 +78,9 @@ def to_dataframe(quest,answ):
     for j in range(len(quest)):
         id_quest=quest[j][1]
         if (quest[j][4] in ['short_text','long_text','date','website','email'] or quest[j][3] in ['autre_text']):
-            temp=[t[6] for t in answ_fr if t[0]==id_quest]
+            temp=[t[6] for t in answ if t[0]==id_quest]
         else:
-            temp=[t[5] for t in answ_fr if t[0]==id_quest]
+            temp=[t[5] for t in answ if t[0]==id_quest]
 
         rep_all.append(temp)
 
