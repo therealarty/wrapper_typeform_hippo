@@ -47,7 +47,11 @@ def update_database_quest (quest_list,QuestionDjango):
         if i % 100 == 0:
             print(i,'/',len(quest_list))
         quest=quest_list[i]
-        QuestionDjango.objects.create(id=quest[1],question_text=quest[2],possible_answer=quest[3],type=quest[4])
+        #QuestionDjango.objects.create(id=quest[1],question_text=quest[2],possible_answer=quest[3],type=quest[4])
+        ob=dict(id=quest[1],question_text=quest[2],possible_answer=quest[3],type=quest[4])
+        QuestionDjango.objects.update_or_create(id=quest[1],defaults=ob)
+
+
     
     print(len(quest_list),'/',len(quest_list))
     return("It's done !")
