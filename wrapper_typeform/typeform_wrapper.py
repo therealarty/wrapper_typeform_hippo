@@ -36,7 +36,7 @@ class Client(object):
             
             
             
-    def typeform_to_DF (self,typeform_id):
+    def typeform_to_DF (self,typeform_id,uuid_hidden_fieldname='',email_hidden_fieldname=''):
         
         
         
@@ -171,6 +171,14 @@ class Client(object):
 
             print("We create the answers list")
             rep_DS=[]
+
+            #deal with hidden_field_names
+            if uuid_hidden_fieldname=='':#default
+                uuid_hidden_fieldname='userid'
+            if email_hidden_fieldname=='':
+                email_hidden_fieldname='email'
+            
+
             for i in range(len(reponses)):
                 if i % 100 == 0:
                     print(str(i)+"th form out of "+str(len(reponses)))
@@ -178,7 +186,7 @@ class Client(object):
                 
                 rep_user=reponses[i]['answers']
                 
-                if 'userid' in reponses[i]['hidden'].keys() :
+                if email_hidden_fieldname in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['userid']
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
@@ -201,7 +209,7 @@ class Client(object):
                 else:
                     uuid=None
                     
-                if 'email' in reponses[i]['hidden'].keys():
+                if email_hidden_fieldname in reponses[i]['hidden'].keys():
                     if reponses[i]['hidden']['email']=='"':
                         email=reponses[i]['hidden']['email'][1:-1]
                     else:
