@@ -28,14 +28,18 @@ def mail_quest(dreemer_info_DF,quest,answ,question):
     return(email)
 
 def uuid(answ, dreemer_info_DF):
-    
-    email_base=dreemer_info_DF.email.unique()
+    d_mail_lc=dreemer_info_DF
+    d_mail_lc.loc[:,'email']=d_mail_lc['email'].apply(lambda x:x.lower())
+    #email_base=dreemer_info_DF.email.unique()
+    email_base=d_mail_lc.email.unique()
     email_liste=list(set([t[1] for t in answ if (pd.isnull(t[2]) & pd.notnull(t[1]))]))
-    email_liste=[t for t in email_liste if t in email_base]
+    #email_liste=[t for t in email_liste if t.lower() in email_base]
+    email_liste=[t.lower() for t in email_liste if t.lower() in email_base]
     answ_with_uuid=[t for t in answ if t[1] not in email_liste]
     
     for i in range(len(email_liste)):
-        uuid=dreemer_info_DF[dreemer_info_DF['email']==email_liste[i]].iloc[0]['dreemer']
+        uuid=dreemer_info_DF[d_mail_lc['email']==email_liste[i]].iloc[0]['dreemer']
+
         answ_with_uuid+=[[t[0],t[1],uuid,t[3],t[4],t[5],t[6]] for t in answ if t[1]==email_liste[i]]
     
     return(answ_with_uuid)
