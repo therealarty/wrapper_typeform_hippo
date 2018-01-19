@@ -78,7 +78,7 @@ def update_database_answ (answ_list,AnswerDjango):
         try:
             AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
         except Exception as e:
-            print("Error occurred while updating answer line:"+str(answer[0]))
+            print("Error occurred while updating answer with token:"+str(answer[3]))
             raise e
 
     print(len(to_update),'/',len(to_update))
@@ -100,7 +100,7 @@ def update_database_answ_force_update_all (answ_list,AnswerDjango):
         try:
             AnswerDjango.objects.update_or_create(usertoken=pl['usertoken'],questionid=pl['questionid'],date__lte=pl['date'],defaults=pl)
         except Exception as e:
-            print("Error occurred while updating answer line:"+str(answer[0]))
+            print("Error occurred while updating answer with token line:"+str(answer[3]))
             raise e
 
 
