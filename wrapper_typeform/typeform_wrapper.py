@@ -186,7 +186,7 @@ class Client(object):
                 
                 rep_user=reponses[i]['answers']
                 
-                if email_hidden_fieldname in reponses[i]['hidden'].keys() :
+                if uuid_hidden_fieldname in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden'][uuid_hidden_fieldname]
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname][1:-1])
