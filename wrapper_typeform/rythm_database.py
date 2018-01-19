@@ -77,7 +77,7 @@ def update_database_answ (answ_list,AnswerDjango):
         answer=to_update[i]
         try:
             AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
-        except Exception, e:
+        except Exception as e:
             print("Error occurred while updating answer line:"+str(answer[0]))
             print str(e)
             raise e
@@ -100,7 +100,7 @@ def update_database_answ_force_update_all (answ_list,AnswerDjango):
         pl=dict(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
         try:
             AnswerDjango.objects.update_or_create(usertoken=pl['usertoken'],questionid=pl['questionid'],date__lte=pl['date'],defaults=pl)
-        except Exception, e:
+        except Exception as e:
             print("Error occurred while updating answer line:"+str(answer[0]))
             print str(e)
             raise e
