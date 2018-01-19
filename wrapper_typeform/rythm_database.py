@@ -22,6 +22,8 @@ def mail_quest(dreemer_info_DF,quest,answ,question):
         uuid=None
         if len(dreemer_info_DF[dreemer_info_DF['email']==mail])>0:
                 uuid=dreemer_info_DF[dreemer_info_DF['email']==mail].iloc[0]['dreemer']
+        elif rep[0][2]!=None: #uuid already set
+            uuid=rep[0][2]
         email+=[[t[0],mail,uuid,t[3],t[4],t[5],t[6]] for t in rep]
     
     
