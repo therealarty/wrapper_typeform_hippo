@@ -187,11 +187,11 @@ class Client(object):
                 rep_user=reponses[i]['answers']
                 
                 if email_hidden_fieldname in reponses[i]['hidden'].keys() :
-                    uuid=reponses[i]['hidden']['userid']
+                    uuid=reponses[i]['hidden'][uuid_hidden_fieldname]
                     if len(uuid)==34:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
+                        uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname][1:-1])
                     elif len(uuid)==32:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'])
+                        uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname])
                     else:
                         uuid=None
                     
@@ -199,9 +199,9 @@ class Client(object):
                 elif 'uuid' in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['uuid']
                     if len(uuid)==34:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'][1:-1])
+                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
                     elif len(uuid)==32:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['userid'])
+                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'])
                     else :
                         uuid=None
                        
@@ -210,10 +210,10 @@ class Client(object):
                     uuid=None
                     
                 if email_hidden_fieldname in reponses[i]['hidden'].keys():
-                    if reponses[i]['hidden']['email']=='"':
-                        email=reponses[i]['hidden']['email'][1:-1]
+                    if reponses[i]['hidden'][email_hidden_fieldname]=='"':
+                        email=reponses[i]['hidden'][email_hidden_fieldname][1:-1]
                     else:
-                        email=reponses[i]['hidden']['email']
+                        email=reponses[i]['hidden'][email_hidden_fieldname]
                 else:
                     email=None
                     
