@@ -211,7 +211,10 @@ class Client(object):
                     
                 if email_hidden_fieldname in reponses[i]['hidden'].keys():
                     if reponses[i]['hidden'][email_hidden_fieldname]=='"':
-                        email=reponses[i]['hidden'][email_hidden_fieldname][1:-1]
+                        #email=reponses[i]['hidden'][email_hidden_fieldname][1:-1]
+                        email=None
+                    elif reponses[i]['hidden'][email_hidden_fieldname]=='xxxxx':
+                        email=None
                     else:
                         email=reponses[i]['hidden'][email_hidden_fieldname]
                 else:
