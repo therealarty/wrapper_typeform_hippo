@@ -36,6 +36,7 @@ class Client(object):
             
       
     def typeform_raws (self,typeform_id):
+        form=requests.get('https://api.typeform.com/forms/'+typeform_id, headers={'authorization': 'bearer '+self.auth()})
         if form.status_code!=200:
             form=form.json()
             print('Error: '+str(form['code']))
