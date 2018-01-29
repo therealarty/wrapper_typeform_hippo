@@ -222,7 +222,7 @@ class Client(object):
                 rep_user=reponses[i]['answers']
                 
                 if uuid_hidden_fieldname in reponses[i]['hidden'].keys() :
-                    uuid=reponses[i]['hidden'][uuid_hidden_fieldname]
+                    uuid=reponses[i]['hidden'][uuid_hidden_fieldname].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname][1:-1])
                     elif len(uuid)==32:
@@ -232,7 +232,7 @@ class Client(object):
                     
                         
                 elif 'uuid' in reponses[i]['hidden'].keys() :
-                    uuid=reponses[i]['hidden']['uuid']
+                    uuid=reponses[i]['hidden']['uuid'].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
                     elif len(uuid)==32:
@@ -251,7 +251,7 @@ class Client(object):
                     elif reponses[i]['hidden'][email_hidden_fieldname]=='xxxxx':
                         email=None
                     else:
-                        email=reponses[i]['hidden'][email_hidden_fieldname]
+                        email=reponses[i]['hidden'][email_hidden_fieldname].strip(u'\u200b')
                 else:
                     email=None
                     
