@@ -34,7 +34,41 @@ class Client(object):
         else:
             print("You must provide an access_token")
             
+      
+    def typeform_raws (self,typeform_id):
+         if form.status_code!=200:
+            form=form.json()
+            print('Error: '+str(form['code']))
+            print(form['description'])
+            return(None,None)
+        
+        else:
             
+            form=form.json()
+
+            print("Getting questions from the API")
+
+            questions=[t for t in form['fields'] if 'validations' in t.keys()]+[item for sublist in [u['fields'] for u in [t['properties'] for t in form['fields'] if t['type']=='group'] ] for item in sublist] 
+
+            print("Getting responses from the API")
+
+            reponses=[]
+            responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&sort=submited_at&completed=1', headers={'authorization': 'bearer '+self.auth()})
+            responses_temp=responses_temp.json()
+
+
+            while len(responses_temp['items'])==500:
+                reponses+=responses_temp['items']
+                last_token=responses_temp['items'][499]['token']
+
+                responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&sort=submited_at&completed=1&after='+last_token, headers={'authorization': 'bearer '+self.auth()})
+                responses_temp=responses_temp.json()
+
+
+            reponses+=responses_temp['items']
+
+            return(questions,reponses)
+
             
     def typeform_to_DF (self,typeform_id,uuid_hidden_fieldname='',email_hidden_fieldname=''):
         
