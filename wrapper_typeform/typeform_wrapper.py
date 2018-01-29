@@ -36,7 +36,7 @@ class Client(object):
             
       
     def typeform_raws (self,typeform_id):
-         if form.status_code!=200:
+        if form.status_code!=200:
             form=form.json()
             print('Error: '+str(form['code']))
             print(form['description'])
