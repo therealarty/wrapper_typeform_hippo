@@ -41,7 +41,7 @@ class Client(object):
             form=form.json()
             print('Error: '+str(form['code']))
             print(form['description'])
-            return(None,None)
+            return(None,None,None)
         
         else:
             
@@ -68,7 +68,7 @@ class Client(object):
 
             reponses+=responses_temp['items']
 
-            return(questions,reponses)
+            return(questions,reponses,form)
 
             
     def typeform_to_DF (self,typeform_id,uuid_hidden_fieldname='',email_hidden_fieldname=''):
