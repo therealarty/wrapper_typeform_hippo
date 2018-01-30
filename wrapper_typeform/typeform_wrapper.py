@@ -225,20 +225,34 @@ class Client(object):
                     uuid=reponses[i]['hidden'][uuid_hidden_fieldname].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname][1:-1])
-                    elif len(uuid)==32:
-                        uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname])
+                    
                     else:
-                        uuid=None
+                        
+                        try:
+                            uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname])
+                        except ValueError:
+                            print('Misformatted uuid hideen field, ignored:')
+                            print(reponses[i]['hidden'][uuid_hidden_fieldname])
+                            uuid=None
+                        except Exception as e:
+                            raise e
                     
                         
                 elif 'uuid' in reponses[i]['hidden'].keys() :
                     uuid=reponses[i]['hidden']['uuid'].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
-                    elif len(uuid)==32:
-                        uuid=uuid2.UUID(reponses[i]['hidden']['uuid'])
+                    
                     else :
-                        uuid=None
+
+                        try:
+                            uuid=uuid2.UUID(reponses[i]['hidden']['uuid'])
+                        except ValueError:
+                            print('Misformatted uuid hideen field, ignored:')
+                            print(reponses[i]['hidden']['uuid'])
+                            uuid=None
+                        except Exception as e:
+                            raise e
                        
                 
                 else:
