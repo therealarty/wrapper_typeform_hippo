@@ -107,7 +107,7 @@ def update_database_answ_force_update_all (answ_list,AnswerDjango):
 
 
     print(len(to_update),'/',len(to_update))
-    return("It's done !")
+    
 
 
 
