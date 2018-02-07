@@ -88,15 +88,39 @@ def update_database_answ_force_update_all (answ_list,AnswerDjango):
     #forces update, overriding existing values
     
     token_already_uploaded=list(set([t['usertoken'] for t in list(AnswerDjango.objects.all().values('usertoken'))]))
-    to_update=[t for t in answ_list if t[3]  not in token_already_uploaded]
-    len_tablesql=AnswerDjango.objects.count()
     
+    #TO CREATE
+    to_update=[t for t in answ_list if t[3] not in token_already_uploaded]
+    len_tablesql=AnswerDjango.objects.count()
+    print('adding new answers')
     for i in range(len(to_update)):
         if i % 100 == 0:
             print(i,'/',len(to_update))
         answer=to_update[i]
         #AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
         pl=dict(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
+        try:
+            AnswerDjango.objects.update_or_create(usertoken=pl['usertoken'],questionid=pl['questionid'],date__lte=pl['date'],defaults=pl)
+        except Exception as e:
+            print("Error occurred while updating answer with token line:"+str(answer[3]))
+            raise e
+
+
+    print(len(to_update),'/',len(to_update))
+    return("It's done !")
+
+
+
+    #here we want to UPDATE
+    print('updating existing answers')
+    to_update=[t for t in answ_list if t[3] in token_already_uploaded]
+        
+    for i in range(len(to_update)):
+        if i % 100 == 0:
+            print(i,'/',len(to_update))
+        answer=to_update[i]
+        #AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
+        pl=dict(userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
         try:
             AnswerDjango.objects.update_or_create(usertoken=pl['usertoken'],questionid=pl['questionid'],date__lte=pl['date'],defaults=pl)
         except Exception as e:

@@ -225,7 +225,8 @@ class Client(object):
                     uuid=reponses[i]['hidden'][uuid_hidden_fieldname].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden'][uuid_hidden_fieldname][1:-1])
-                    
+                    elif uuid=='xxxxx': #default
+                        uuid=None
                     else:
                         
                         try:
@@ -242,6 +243,8 @@ class Client(object):
                     uuid=reponses[i]['hidden']['uuid'].strip(u'\u200b')
                     if len(uuid)==34:
                         uuid=uuid2.UUID(reponses[i]['hidden']['uuid'][1:-1])
+                    elif uuid=='xxxxx': #default
+                        uuid=None
                     
                     else :
 
