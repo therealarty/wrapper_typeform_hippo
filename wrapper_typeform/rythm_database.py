@@ -132,6 +132,40 @@ def update_database_answ_force_update_all (answ_list,AnswerDjango):
     return("It's done !")
 
 
+def update_mail_uuid_db (answ_list,AnswerDjango):
+    #forces update, overriding existing values
+    
+    token_already_uploaded=list(set([t['usertoken'] for t in list(AnswerDjango.objects.all().values('usertoken'))]))
+    
+
+    #here we want to UPDATE mail and uuid fields
+    print('updating existing answers with mail and uuid')
+    to_update=[t for t in answ_list if t[3] in token_already_uploaded]
+    to_update_df=pd.DataFrame(to_update)
+    #to_update_df=to_update_df[1,2,3]
+    #to_update_df.columns=['email','userid','usertoken']
+    #to_update_df.drop_duplicates(subset=['email','userid','usertoken'], keep='first', inplace=True)
+    #to_update_df.columns=['email','userid','usertoken']
+    to_update_df.drop_duplicates(subset=[1,2,3], keep='first', inplace=True)
+    to_update=to_update_df.values.tolist()  
+    for i in range(len(to_update)):
+        if i % 100 == 0:
+            print(i,'/',len(to_update))
+        answer=to_update[i]
+        #AnswerDjango.objects.create(id=i+len_tablesql,userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
+        pl=dict(userid=answer[2],email=answer[1],usertoken=answer[3],questionid=answer[0],date=answer[4],answer=answer[5],answer_text=answer[6])
+        try:
+            AnswerDjango.objects.filter(usertoken=pl['usertoken']).update(email=answer[1],userid=answer[2])
+            
+        except Exception as e:
+            print("Error occurred while updating mail and uuid with token line:"+str(answer[3]))
+            raise e
+
+
+    print(len(to_update),'/',len(to_update))
+    return("It's done !")
+
+
 
 def to_dataframe(quest,answ):
     token=list(set([t[3] for t in answ]))
