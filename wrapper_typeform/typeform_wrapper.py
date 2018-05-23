@@ -274,7 +274,10 @@ class Client(object):
                     
                 date=time.mktime(pd.to_datetime(reponses[i]['submitted_at']).timetuple())
                 token=reponses[i]['token']
-                id_quest=[t['field']['id'] for t in rep_user]
+                try: # deal with empty answers
+                    id_quest=[t['field']['id'] for t in rep_user]
+                except TypeError:
+                    id_quest=[]
 
                 for j in range(len(question_DS)):
                     id=question_DS[j][1]
