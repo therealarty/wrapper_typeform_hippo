@@ -71,7 +71,7 @@ class Client(object):
             return(questions,reponses,form)
 
             
-    def typeform_to_DF (self,typeform_id,uuid_hidden_fieldname='',email_hidden_fieldname=''):
+    def typeform_to_DF (self,typeform_id,uuid_hidden_fieldname='',email_hidden_fieldname='',custom_hidden_fieldname_list=[]):
         
         
         
@@ -202,6 +202,9 @@ class Client(object):
                     if questions[i]['properties']['allow_other_choice']==True:
                         possible_answer='autre_text'
                         question_DS.append([id,id,title,possible_answer,type])
+
+            
+
 
 
             print("We create the answers list")
@@ -345,6 +348,12 @@ class Client(object):
 
                     else:
                         rep_DS+=[[id,email,uuid,token,date,None,None]]
+                ## add custom hidden fields as text answers
+                if len(custom_hidden_fieldname_list)>0:
+                    for c_hidden in custom_hidden_fieldname_list:
+                        if c_hidden in reponses[i]['hidden'].keys():
+                            id='hidden_'+c_hidden
+                            Rep_DS+=[[id,email,uuid,token,date,1,reponses[i]['hidden'][c_hidden]]] 
                         
             print(str(len(reponses))+'/'+str(len(reponses)))  
             print("It's good")            
