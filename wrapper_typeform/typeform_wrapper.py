@@ -206,7 +206,7 @@ class Client(object):
             ## add custom hidden fields as text questions
             if len(custom_hidden_fieldname_list)>0:
                 for c_hidden in custom_hidden_fieldname_list:
-                    type=='short_text_hidden'
+                    type='short_text_hidden'
                     possible_answer=None
                     id='hidden_'+c_hidden
                     title=c_hidden
