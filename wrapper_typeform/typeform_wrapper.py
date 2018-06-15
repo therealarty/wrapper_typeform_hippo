@@ -353,7 +353,7 @@ class Client(object):
                     for c_hidden in custom_hidden_fieldname_list:
                         if c_hidden in reponses[i]['hidden'].keys():
                             id='hidden_'+c_hidden
-                            Rep_DS+=[[id,email,uuid,token,date,1,reponses[i]['hidden'][c_hidden]]] 
+                            rep_DS+=[[id,email,uuid,token,date,1,reponses[i]['hidden'][c_hidden]]] 
                         
             print(str(len(reponses))+'/'+str(len(reponses)))  
             print("It's good")            
