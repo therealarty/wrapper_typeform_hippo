@@ -229,7 +229,10 @@ class Client(object):
                 if i % 100 == 0:
                     print(str(i)+"th form out of "+str(len(reponses)))
 
-                
+                # catch a strange case with missing data
+                if 'answers' not in reponses[i].keys():
+                    continue
+
                 rep_user=reponses[i]['answers']
                 if uuid_hidden_fieldname in reponses[i].get('hidden',{}).keys() :
                     uuid=reponses[i]['hidden'][uuid_hidden_fieldname].strip(u'\u200b')
