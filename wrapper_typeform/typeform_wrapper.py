@@ -58,9 +58,9 @@ class Client(object):
             responses_temp=responses_temp.json()
 
 
-            while len(responses_temp['items'])==1000:
+            while len(responses_temp['items'])!=0:
                 reponses+=responses_temp['items']
-                last_token=responses_temp['items'][999]['token']
+                last_token=responses_temp['items'][-1]['token']
 
                 responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1&after='+last_token, headers={'authorization': 'bearer '+self.auth()})
                 responses_temp=responses_temp.json()
@@ -100,9 +100,9 @@ class Client(object):
             responses_temp=responses_temp.json()
 
 
-            while len(responses_temp['items'])==1000:
+            while len(responses_temp['items'])!=0:
                 reponses+=responses_temp['items']
-                last_token=responses_temp['items'][999]['token']
+                last_token=responses_temp['items'][-1]['token']
 
                 responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1&after='+last_token, headers={'authorization': 'bearer '+self.auth()})
                 responses_temp=responses_temp.json()
