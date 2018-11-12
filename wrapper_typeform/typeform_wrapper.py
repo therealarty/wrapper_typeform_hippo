@@ -54,7 +54,7 @@ class Client(object):
             print("Getting responses from the API")
 
             reponses=[]
-            responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1', headers={'authorization': 'bearer '+self.auth()})
+            responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&completed=1', headers={'authorization': 'bearer '+self.auth()})
             responses_temp=responses_temp.json()
 
 
@@ -62,7 +62,7 @@ class Client(object):
                 reponses+=responses_temp['items']
                 last_token=responses_temp['items'][-1]['token']
 
-                responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1&after='+last_token, headers={'authorization': 'bearer '+self.auth()})
+                responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&completed=1&before='+last_token, headers={'authorization': 'bearer '+self.auth()})
                 responses_temp=responses_temp.json()
 
 
@@ -96,7 +96,7 @@ class Client(object):
             print("Getting responses from the API")
 
             reponses=[]
-            responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1', headers={'authorization': 'bearer '+self.auth()})
+            responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&completed=1', headers={'authorization': 'bearer '+self.auth()})
             responses_temp=responses_temp.json()
 
 
@@ -104,7 +104,7 @@ class Client(object):
                 reponses+=responses_temp['items']
                 last_token=responses_temp['items'][-1]['token']
 
-                responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=1000&completed=1&after='+last_token, headers={'authorization': 'bearer '+self.auth()})
+                responses_temp=requests.get('https://api.typeform.com/forms/'+typeform_id+'/responses'+'?page_size=500&completed=1&before='+last_token, headers={'authorization': 'bearer '+self.auth()})
                 responses_temp=responses_temp.json()
 
 
