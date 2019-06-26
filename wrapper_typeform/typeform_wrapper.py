@@ -361,7 +361,7 @@ class Client(object):
                 ## add custom hidden fields as text answers
                 if len(custom_hidden_fieldname_list)>0:
                     for c_hidden in custom_hidden_fieldname_list:
-                        if c_hidden in reponses[i]['hidden'].keys():
+                        if c_hidden in reponses[i].get('hidden',{}).keys():
                             id='hidden_'+c_hidden
                             rep_DS+=[[id,email,uuid,token,date,1,reponses[i]['hidden'][c_hidden]]] 
                         
